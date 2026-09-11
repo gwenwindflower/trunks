@@ -1,0 +1,16 @@
+[[repos]]
+repo = "builtin"
+hooks = [
+  { id = "trailing-whitespace" },
+  { id = "end-of-file-fixer" },
+  { id = "check-merge-conflict" },
+  { id = "check-added-large-files", args = ["--maxkb=1024"] },
+  { id = "detect-private-key" },
+  { id = "check-toml" },
+]
+
+[[repos]]
+repo = "local"
+hooks = [
+  { id = "rustfmt", name = "rustfmt", language = "system", entry = "rustfmt --check --edition 2024", types = ["rust"] },
+]

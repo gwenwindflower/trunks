@@ -1,0 +1,37 @@
+[tasks.build]
+description = "Compile the optimized binary into dist/bin"
+alias = "b"
+run = [
+  "cargo build --locked --release",
+  "mkdir -p dist/bin",
+  "cp target/release/trunks dist/bin/trunks",
+]
+
+[tasks.install]
+description = "Install the checkout's binary on PATH"
+run = "cargo install --path . --locked"
+
+[tasks.fmt]
+description = "Format Rust source files"
+run = "cargo fmt --all"
+
+[tasks."lint:hooks"]
+description = "Check file hygiene, TOML, and Rust formatting with prek"
+run = "prek run --all-files"
+
+[tasks."lint:clippy"]
+description = "Lint every Rust target and feature with warnings treated as errors"
+run = "cargo clippy --all-targets --all-features --locked -- -D warnings"
+
+[tasks."test:rust"]
+description = "Run the Rust tests against disposable Git repositories"
+run = "cargo test --all-features --locked"
+
+[tasks."hooks:install"]
+description = "Install the prek pre-commit hook into this clone"
+run = "prek install"
+
+[tasks.check]
+description = "Run file checks, strict Clippy, and the Rust tests"
+alias = "c"
+depends = ["lint:*", "test:*"]

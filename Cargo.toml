@@ -1,0 +1,27 @@
+[package]
+name = "trunks"
+version = "0.1.0"
+edition = "2024"
+description = "Prepare Codex Git permissions for sibling worktrees"
+authors = ["Gwyneth Windflower"]
+license = "MIT"
+readme = "README.md"
+keywords = ["cli", "codex", "git", "worktree", "worktrunk"]
+categories = ["command-line-utilities", "development-tools"]
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive", "wrap_help"] }
+tempfile = "3"
+toml_edit = "0.25"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+
+[profile.release]
+lto = true
+strip = true
+codegen-units = 1
