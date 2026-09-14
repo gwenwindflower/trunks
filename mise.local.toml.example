@@ -1,0 +1,5 @@
+# Copy to mise.local.toml (gitignored) for local config
+# To skip project-scoped installs from mise, list the project tools already on your PATH
+
+[settings]
+disable_tools = ["prek"]
