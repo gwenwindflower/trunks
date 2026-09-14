@@ -1,3 +1,6 @@
+[tools]
+prek = "latest"
+
 [tasks.build]
 description = "Compile the optimized binary into dist/bin"
 alias = "b"
