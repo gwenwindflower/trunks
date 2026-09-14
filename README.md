@@ -2,6 +2,8 @@
 
 A tiny utility to prepare agent git permissions for a sibling worktrees pattern, optimized for [Worktrunk](https://worktrunk.dev/). Currently only affects Codex as other harnesses I use support the sibling pattern already.
 
+<img width="1500" height="500" alt="trunks-flowers" src="https://github.com/user-attachments/assets/bf1f0716-969b-453a-911d-945b3be49213" />
+
 ## Using trunks
 
 ### What's the sibling pattern?
