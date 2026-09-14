@@ -1,5 +1,7 @@
 /target/
 /dist/
+/mise.local.toml
+/.mise.local.toml
 .DS_Store
 *.log
 .env
