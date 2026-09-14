@@ -12,7 +12,7 @@ use clap::Parser;
 #[command(
     version,
     about,
-    after_help = "Worktrunk creation hook (.config/wt.toml):\n  [pre-start]\n  codex = \"trunks\"\n\nThe named permission profile must be active in Codex. Trunks adds Git path\nrules without changing default_permissions or other sandbox settings."
+    after_help = "Worktrunk creation hook (.config/wt.toml):\n  [pre-start]\n  trunks-agent-config = \"trunks\"\n\nThe named permission profile must be active in Codex. Trunks adds Git path\nrules without changing default_permissions or other sandbox settings."
 )]
 struct Cli {
     /// Discover the Git worktree containing this directory
