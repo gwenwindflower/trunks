@@ -14,8 +14,6 @@ The shared directory holds objects, refs, and repository configuration. The priv
 
 ## Install
 
-Requires Rust and Git 2.31 or later to build from this checkout. Only Git is needed at runtime.
-
 ```sh
 cargo install --path . --locked
 ```
@@ -26,7 +24,7 @@ Add this to `.config/wt.toml` in a project, or to your Worktrunk user config:
 
 ```toml
 [pre-start]
-codex = "trunks"
+trunks-agent-config = "trunks"
 ```
 
 [Worktrunk's `pre-start` hook](https://worktrunk.dev/hook/) runs in the created worktree and finishes before `post-start` hooks or `--execute` launch Codex. If another creation hook copies `.codex/config.toml`, put that copy first and `trunks` second in a `[[pre-start]]` pipeline. Commands in one hook table run concurrently.
@@ -74,9 +72,12 @@ The rules cover Git metadata access. More-specific restrictions, managed policy,
 
 ## Development
 
-Project tasks use globally available Rust, Git, and prek installations. `mise tasks` lists the commands. Review and trust the configuration, then run:
+Use your own Rust toolchain. `mise.toml` declares prek at `latest`. If prek is already installed globally, copy `mise.local.toml.example` to the gitignored `mise.local.toml`. Its `disable_tools` setting skips mise management of prek in this project, including declarations inherited from global mise config, so tasks use the installation on `PATH`.
+
+`mise tasks` lists the commands. Review and trust the configuration, then run:
 
 ```sh
+mise install
 mise run hooks:install
 mise run check
 mise run build
