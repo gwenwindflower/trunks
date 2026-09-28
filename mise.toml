@@ -2,16 +2,20 @@
 prek = "latest"
 
 [tasks.build]
-description = "Compile the optimized binary into dist/bin"
-alias = "b"
+description = "Compile the optimized binary"
 run = [
   "cargo build --locked --release",
-  "mkdir -p dist/bin",
-  "cp target/release/trunks dist/bin/trunks",
 ]
+
+[tasks."build:pretty"]
+description = "Run standard build with pretty interactive output"
+alias = "b"
+run = "cargo pretty build"
+raw = true
 
 [tasks.install]
 description = "Install the checkout's binary on PATH"
+alias = "i"
 run = "cargo install --path . --locked"
 
 [tasks.fmt]
@@ -29,6 +33,12 @@ run = "cargo clippy --all-targets --all-features --locked -- -D warnings"
 [tasks."test:rust"]
 description = "Run the Rust tests against disposable Git repositories"
 run = "cargo test --all-features --locked"
+
+[tasks."test:pretty"]
+description = "Run the Rust tests with pretty interactive output"
+alias = "t"
+run = "cargo pretty test --all-features --locked"
+raw = true
 
 [tasks."hooks:install"]
 description = "Install the prek pre-commit hook into this clone"

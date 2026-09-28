@@ -101,4 +101,4 @@ mise run check
 mise run build
 ```
 
-The optimized binary is written to `dist/bin/trunks`. Tests create disposable repositories and sibling worktrees to exercise the CLI, Git discovery, and config editing together.
+The optimized binary is written to `target/release/trunks`. Tests create disposable repositories and sibling worktrees to exercise the CLI, Git discovery, and config editing together.
